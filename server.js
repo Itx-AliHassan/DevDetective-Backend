@@ -6,7 +6,7 @@ const port = process.env.PORT
 
 async function startServer() {
     
-    connectDb()
+    await connectDb()
 
     app.listen(port, () => {
         console.log(`server is running on http://localhost:${port} 😎`)

@@ -1,10 +1,14 @@
 import express from "express";
-import githubRoutes from "./routes/github.routes.js";
 import { clerkMiddleware } from "@clerk/express";
+import authRoutes from "./routes/auth.routes.js";
+import githubRoutes from "./routes/github.routes.js";
 
 const app = express()
 
-app.use(clerkMiddleware)
-app.use("/api", githubRoutes);
+app.use(express.json)
+app.use(clerkMiddleware())
+
+app.use('/api/auth', authRoutes)
+app.use('/api/github', githubRoutes)
 
 export default app
