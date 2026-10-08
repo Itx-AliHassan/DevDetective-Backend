@@ -6,7 +6,6 @@ import githubRoutes from "./routes/github.routes.js";
 const app = express()
 
 app.use(express.json)
-app.use(clerkMiddleware())
 
 app.use('/api/auth', authRoutes)
 app.use('/api/github', githubRoutes)
