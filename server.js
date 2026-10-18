@@ -5,7 +5,6 @@ import connectDb from "./src/db/db.js";
 const port = process.env.PORT
 
 async function startServer() {
-    
     await connectDb()
 
     app.listen(port, () => {

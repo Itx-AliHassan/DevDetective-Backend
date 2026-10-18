@@ -39,7 +39,7 @@ const repoSchema = new mongoose.Schema({
  * - "repoUrl" this will be the URL of the repo like (https://github.com/Itx-AliHassan/DevDetective-Backend)
  * - "owner" this will be the name of the owner of the repo like (Itx-AliHassan)
  * - "language" this will tell you which programming language is user
- * - "userId" this is the id of the user which clerk give you 
+ * - "userId" this is the ID of the user who owns the repository
  */
 
 export const repoModel = mongoose.model("Repo", repoSchema)

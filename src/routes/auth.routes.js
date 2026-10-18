@@ -1,8 +1,12 @@
+import { getAuth } from "@clerk/express";
 import express from "express";
-import { registerUser } from "../controllers/auth.controller.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.get('/register', registerUser)
+router.get('/clerk-data', (req, res) => {
+    const auth = getAuth(req);
+    console.log('auth', auth)
+    return res.status(200).json({ message: "Clerk data retrieved successfully", auth });
+})
 
 export default router

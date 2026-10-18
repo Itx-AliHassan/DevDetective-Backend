@@ -2,7 +2,7 @@
 
 ## 🔐 User / Auth
 
-Clerk handles authentication, so **no custom login/register/logout APIs** are needed.
+Authentication provider integration has been removed from this backend. No login, register, or logout endpoints are currently implemented.
 
 ### GET `/api/me`
 
@@ -38,7 +38,7 @@ Start/connect the user's GitHub account.
 
 **Use:** Connect GitHub so DevDetective can access the user's repositories.
 
-> Depending on the final Clerk OAuth setup, this may be handled by the frontend/Clerk flow rather than being a traditional backend GET route.
+> A GitHub authorization flow must be provided separately before this endpoint can be implemented.
 
 ---
 
@@ -340,4 +340,4 @@ Start with:
 
 Then build the AI/dashboard stuff.
 
-**Clerk handles authentication. Your APIs handle DevDetective.** 🔥
+**Your APIs handle DevDetective.** 🔥
