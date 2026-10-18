@@ -1,35 +1,28 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    github: {
-        username: {
-            type: String,
-        },
-        profileUrl: {
-            type: String
-        },
-        isConnected: {
-            type: Boolean,
-            default: false
-        }
-    },
-    reposMonitoring: {
+    installationId: {
         type: Number,
-        default: 0,
-        min: 0,
-        required: true
+        required: true,
+        unique: true
     },
-    avatarUrl: {
+    email: {
         type: String,
         required: true,
+        unique: true
+    },
+    clerkId: {
+        type: String,
+        required: true,
+        unique: true
     }
 }, { timestamps: true })
 
 /**
  * This will create an user on mongoDB thing to foreword to create an user
- * - github this is an onj with username, profileUrl, isConnected (not required)
- * - reposMonitoring this will tell the user how many repos are on Monitoring (not required)
- * - avatarUrl is the user's profile image URL
+ * - installationId this is the installation_id which you get when the user install the GH app
+ * - email don't tell me you don't know this
+ * - clerkId you will get this from the clerk this is the second storage you get every data from there
  */
 
 export const userModule = mongoose.model("User", userSchema)
