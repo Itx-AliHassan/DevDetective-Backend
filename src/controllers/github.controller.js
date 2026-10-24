@@ -11,7 +11,14 @@ export async function saveToken(req, res) {
 
     const user = await userModule.findOne({ clerkId: userId })
 
+    if (!user) return res.status(404).json({ message: "No user found base on this userID" })
+
     user.installationId = installationId
+    await user.save()
 
     res.status(200).json({ message: "installationId saved successfully" })
+}
+
+export async function getRepos(req, res) {
+
 }
