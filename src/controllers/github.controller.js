@@ -1,5 +1,6 @@
 import { getAuth } from "@clerk/express";
 import { userModule } from "../modules/user.module.js";
+import { githubAppToken } from "../utils/github.js";
 
 export async function saveToken(req, res) {
     const { userId } = getAuth(req)
@@ -20,5 +21,15 @@ export async function saveToken(req, res) {
 }
 
 export async function getRepos(req, res) {
+    const { userId } = getAuth(req)
+    const { installationId } = req.body
+    // const installationId = 173071071
+    // const userId = 'user_3K8tr8pm6GRXlMqT0ENsBDqxqol'
 
+    if (!installationId) return res.status(422).json({ message: "Installation Id is missing" })
+    if (!userId) return res.status(400).json({ message: "UserId is messing pls pass the token to processed" })
+
+    const appToken = await githubAppToken(installationId)
+    const { data } = await appToken.request("GET /installation/repositories")
+    res.status(200).json({ message: "gh data fetched successfully", ghData: data })
 }

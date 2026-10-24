@@ -6,5 +6,5 @@ const githubApp = new App({
 });
 
 export async function githubAppToken(installationId) {
-    return await githubApp.getInstallationOctokit({ installationId });
+    return await githubApp.getInstallationOctokit(installationId);
 }
