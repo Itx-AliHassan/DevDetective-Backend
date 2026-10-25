@@ -31,5 +31,14 @@ export async function getRepos(req, res) {
 
     const appToken = await githubAppToken(installationId)
     const { data } = await appToken.request("GET /installation/repositories")
-    res.status(200).json({ message: "gh data fetched successfully", ghData: data })
+
+    const ghData = data.repositories.map((repo => ({
+        id: repo.id,
+        fullName: repo.full_name,
+        isPrivate: repo.private,
+        url: repo.html_url,
+        language: repo.language
+    })))
+
+    res.status(200).json({ message: "gh data fetched successfully", ghData })
 }
